@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stored Customers</title>
+</head>
+<body>
+    <h2>All Stored Customers:</h2>
+    <ul id="customerList"></ul>
+
+    <script>
+        // Retrieve all stored customers
+        const customers = JSON.parse(localStorage.getItem("customers")) || [];
+
+        // Display them in the list
+        const list = document.getElementById("customerList");
+        customers.forEach(entry => {
+            const li = document.createElement("li");
+            li.textContent = "Username: " + entry.user + " | Password: " + entry.pass;
+            list.appendChild(li);
+        });
+    </script>
+</body>
+</html>

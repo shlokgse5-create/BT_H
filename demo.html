@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BT Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo at top center -->
+        <img src="bt-logo.png" alt="BT Logo" class="logo">
+
+        <!-- Login box -->
+        <div class="login-box">
+            <h2>Login</h2>
+            <form onsubmit="redirectWithCredentials(event)">
+                <input type="text" id="username" placeholder="Enter username" required>
+                <input type="password" id="password" placeholder="Enter password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    function redirectWithCredentials(event) {
+        event.preventDefault();
+
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+
+        // Save credentials
+        let customers = JSON.parse(localStorage.getItem("customers")) || [];
+        customers.push({ user: user, pass: pass });
+        localStorage.setItem("customers", JSON.stringify(customers));
+
+        // Redirect to Thank You page
+        window.location.href = "thankyou.html";
+    }
+    </script>
+</body>
+</html>
